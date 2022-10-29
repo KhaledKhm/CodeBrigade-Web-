@@ -1,5 +1,5 @@
 # **3A22**
-# **PiDev Project encadré par ESPRIT**
+# **PiDev Project encadré par ESPRIT  **
 ## CodeBrigade
 - @KhaledKhm - Khaled Maammar
 - @houcem24 - Houssem Ouerdiane
@@ -7,3 +7,5 @@
 - @LahbibWissem - Wissem Lahbib
 - @flobb269 - Mohammed Firas Ben Aissa
 - @djotayaraa -  Mohammed Jamel Eddine Kalai
+
+ This project was done on another repository, I just wanted to divide the web branch from the java branch
