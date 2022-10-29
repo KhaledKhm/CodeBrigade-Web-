@@ -1,5 +1,5 @@
 # **3A22**
-# **PiDev Project encadré par ESPRIT  **
+# **PiDev Project encadré par ESPRIT**
 ## CodeBrigade
 - @KhaledKhm - Khaled Maammar
 - @houcem24 - Houssem Ouerdiane
