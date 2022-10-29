@@ -1,0 +1,28 @@
+{% extends 'jamel1.html.twig' %}
+{% block body %}
+    <h4>Promotion Evenement</h4>
+    <br><br><br>
+    <table id="bootstrap-data-table"class="table" >
+
+        <th>Libelle</th>
+        <th>PoucentageReduction</th>
+
+
+
+        </tr>
+        {% for Post in post %}
+            <tr>
+
+                <td>
+                    {{Post.Libelle}}
+                </td>
+                <td>
+                    {{Post.PoucentageReduction}}
+                </td>
+
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

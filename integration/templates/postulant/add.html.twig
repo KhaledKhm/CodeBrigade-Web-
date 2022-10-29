@@ -1,0 +1,25 @@
+{% extends 'jamel1.html.twig' %}
+ {% block content %}  {% endblock  %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajouter votre participation </title>
+</head>
+<body>
+<h1>votre information de participation</h1>
+<br>
+<form action="" method="POST">
+    Nom: <input type="text" placeholder="Email" name="Email" value="{{ user.nomPersonne }}">
+    Prenom: <input type="text" placeholder="Email" name="Email" value="{{ user.prenomPersonne }}">
+
+
+    Email: <input type="text" placeholder="Email" name="Email" value="{{ user.email }}">
+
+
+    <button type="submit" class="btn btn-primary btn-sm">submit</button>
+</form>
+</body>
+</html>
+{% endblock %}

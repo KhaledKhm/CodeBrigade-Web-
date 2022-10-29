@@ -1,0 +1,101 @@
+{% extends'khaledbase.html.twig' %}
+
+{% block lwest %}
+
+<table border="1" class="table table-hover">
+    <tr class="table-light">
+        <th>ID</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Role</th>
+        <th>Account Status</th>
+        <th>cin de Personne</th>
+        <th>Immatricule de l'Entreprise</th>
+        <th>Nom Personne</th>
+        <th>Prenom de Personne</th>
+        <th>Libelle de Entreprise</th>
+        <th>sexePersonne</th>
+        <th>etatSocialePersonne</th>
+        <th>telephone</th>
+        <th>Adresse</th>
+
+        <th>siteweb</th>
+        <th>Domaine de Prsonnne</th>
+        <th>secteur de l'Entreprise</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+    </tr>
+    {% for user in utilisateur %}
+    <tr>
+        <td>
+            {{user.id}}
+        </td>
+        <td>
+            {{user.email}}
+        </td>
+        <td>
+            {{ user.password}}
+        </td>
+        <td>
+            {{user.role}}
+        </td>
+        <td>
+            {{user.accountStatus}}
+        </td>
+        <td>
+            {{user.cinPersonne}}
+        </td>
+        <td>
+            {{user.immatriculeEntreprise}}
+        </td>
+        <td>
+            {{user.nomPersonne}}
+        </td>
+        <td>
+            {{user.prenomPersonne}}
+        </td>
+        <td>
+            {{user.libelleEntreprise}}
+        </td>
+        <td>
+            {{user.sexePersonne}}
+        </td>
+        <td>
+            {{user.etatSocialePersonne}}
+        </td>
+        <td>
+            {{user.telephone}}
+        </td>
+        <td>
+            {{user.adresse}}
+        </td>
+
+        <td>
+            {{user.siteweb}}
+        </td>
+        <td>
+            {{user.domainePersonne}}
+        </td>
+        <td>
+            {{user.secteurEntreprise}}
+        </td>
+        <td>
+            <form action="{{ path('modifierUtilisateur',{'id':user.id} )}}"><button>Modifier</button></form>
+        </td>
+        <td>
+            <form action="{{ path('supprimerUtilisateur',{'id':user.id} )}}"><button>Supprimer</button></form>
+        </td>
+
+
+    </tr>
+    {% endfor %}
+        {% block footer %}
+            {% block logout %}
+                {% if app.user %}
+                <a class="btn btn-rose" href="{{ path('logout')}}">Déconnexion</a>
+                {% endif %}
+            {% endblock %}
+        {% endblock %}
+
+
+{% endblock %}

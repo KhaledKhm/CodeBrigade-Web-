@@ -1,0 +1,48 @@
+{% extends 'firas1.html.twig' %}
+{% block body %}
+
+    <table class="table">
+        <tr class="table-light">
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Sexe</th>
+            <th scope="col">Etat Sociale</th>
+            <th scope="col">Adresse</th>
+
+            <th scope="col">Email</th>
+            <th scope="col">Compétence</th>
+        </tr>
+        {% for Post in post %}
+            <tr>
+                <td>
+                    {{Post.nomPersonne}}
+                </td>
+                <td>
+                    {{Post.prenomPersonne}}
+                </td>
+                <td>
+                    {{ Post.sexePersonne}}
+                </td>
+                <td>
+                    {{ Post.etatSocialePersonne}}
+                </td>
+                <td>
+                    {{ Post.adresse}}
+                </td>
+                <td>
+                    {{ Post.email}}
+                </td>
+                <td>
+                    {{ Post.domainePersonne}}
+                </td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('rendezvous',{'id':Post.id})}}">Accepter</a>
+                </td>
+                <td>
+                    <form  action="{{ path('suppPost',{'id':Post.id})}}"><button type="submit" class="btn btn-danger"> supprimer</button></form>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

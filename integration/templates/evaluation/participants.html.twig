@@ -1,0 +1,42 @@
+{% extends 'HoussemBack.html.twig' %}
+{% block body %}
+
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h4">Liste des Participants</h4>
+
+        </div>
+
+    </div>
+    <table class="table">
+        <tr class="table-light">
+
+            <th>ID</th>
+            <th>Libelle</th>
+            <th>Ajouter Participants</th>
+            <th>Afficher Participants</th>
+
+        </tr>
+        {% for Evaluation in classe %}
+            <tr>
+                <td>
+                    {{Evaluation.ID}}
+                </td>
+                <td>
+                    {{Evaluation.Libelle}}
+                </td>
+                <td>
+                    {% set cmp=0 %}
+                    <form action="{{ path('ajouterParticipationEvaluation',{'idE':Evaluation.id})}}"><button class="btn btn-outline-primary">Ajouter Participants</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('ListParticipationEvaluation',{'idE':Evaluation.id})}}"><button class="btn btn-outline-primary">Afficher Participants</button></form>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+
+
+{% endblock %}

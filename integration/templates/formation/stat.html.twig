@@ -1,0 +1,261 @@
+
+{% extends 'backWissem.html.twig' %}
+{% block preload %}
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo"><img src="{{ asset('publicWissem/vendors/images/JobbookLogo.svg') }}" alt=""></div>
+            <div class='loader-progress' id="progress_div">
+                <div class='bar' id='bar1'></div>
+            </div>
+            <div class='percent' id='percent1'>0%</div>
+            <div class="loading-text">
+                Loading...
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block header %}
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon dw dw-menu"></div>
+
+
+
+            <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                    <div class="widget-data">
+
+                        <div class="weight-300 font-30 text-blue">Satistiques</div>
+                    </div>
+                    <div class="widget-icon">
+                        <div class="icon" data-color="#00eccf" style="color: rgb(0, 236, 207);"><i class="icon-copy dw dw-analytics"></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+{% endblock %}
+{% block body %}
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Satistiques</h4>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-right">
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Graph
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" style="">
+                                <a class="dropdown-item" onclick="changeLine()">Line</a>
+                                <a class="dropdown-item" onclick="changePie()">Pie</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="linechart">
+            <div class="bg-white pd-20 card-box mb-30">
+
+                <h4 class="h4 text-blue">LineCharts</h4>
+
+                <div id="chart1"></div>
+            </div>
+            </div>
+            <div id="piechart" hidden>
+            <div class="col-md-6 mb-30">
+                <div class="pd-20 card-box height-100-p">
+                    <h4 class="h4 text-blue">Pie Chart</h4>
+                    <div id="chart8"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    {% set m1 = 0 %}
+    {% set m2 = 0 %}
+    {% set m3 = 0 %}
+    {% set m4 = 0 %}
+    {% set m5 = 0 %}
+    {% set m6 = 0 %}
+    {% set m7 = 0 %}
+    {% set m8 = 0 %}
+    {% set m9 = 0 %}
+    {% set m10 = 0 %}
+    {% set m11 = 0 %}
+    {% set m12 = 0 %}
+
+
+
+    {% for formation in listFormation %}
+    {% if ( formation.dateDebutFor|date('F') =='January' ) %}
+    {% set m1= m1 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='February' ) %}
+    {% set m2= m2 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='March' ) %}
+    {% set m3= m3 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='April' ) %}
+    {% set m4= m4 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='May' ) %}
+    {% set m5= m5 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='June' ) %}
+    {% set m6= m6 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='July' ) %}
+    {% set m7= m7 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='August' ) %}
+    {% set m8= m8 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='September' ) %}
+    {% set m9= m9 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='October' ) %}
+    {% set m10= m10 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='November' ) %}
+    {% set m11= m11 + 1 %}
+    {% endif %}
+    {% if ( formation.dateDebutFor|date('F') =='December' ) %}
+    {% set m12= m12 + 1 %}
+    {% endif %}
+
+
+
+
+
+
+    {% endfor %}
+    var options = {
+        series: [{
+            name: 'Formations',
+            data: [{{ [m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12]|join(',') }}]
+        }],
+        chart: {
+            height: 350,
+            type: 'line',
+            toolbar: {
+                show: false,
+            }
+        },
+        grid: {
+            show: false,
+            padding: {
+                left: 0,
+                right: 0
+            }
+        },
+        stroke: {
+            width: 7,
+            curve: 'smooth'
+        },
+        xaxis: {
+
+            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        },
+        title: {
+            text: 'Nombre Des Formations Par Mois',
+            align: 'left',
+            style: {
+                fontSize: "16px",
+                color: '#666'
+            }
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shade: 'dark',
+                gradientToColors: [ '#1b00ff'],
+                shadeIntensity: 1,
+                type: 'horizontal',
+                opacityFrom: 1,
+                opacityTo: 1,
+                stops: [0, 100, 100, 100]
+            },
+        },
+        markers: {
+            size: 4,
+            colors: ["#FFA41B"],
+            strokeColors: "#fff",
+            strokeWidth: 2,
+            hover: {
+                size: 7,
+            }
+        },
+        yaxis: {
+            min: 0,
+            max: 30,
+            title: {
+                text: 'Formations',
+            },
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#chart1"), options);
+    chart.render();
+    var options8 = {
+        series: [{{ [m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12]|join(',') }}],
+
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December'
+        ],
+
+        chart: {
+            type: 'donut',
+        },
+        title: {
+            text: 'Pourcentage Des Formations Par Mois',
+            align: 'left',
+            style: {
+                fontSize: "16px",
+                color: '#666'
+            }
+        },
+
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#chart8"), options8);
+    chart.render();
+    function changeLine(){
+        document.getElementById('piechart').hidden=true;
+        document.getElementById('linechart').hidden=false;
+
+    }
+    function changePie(){
+
+        document.getElementById("linechart").hidden=true;
+        document.getElementById("piechart").hidden=false;
+    }
+</script>
+
+{% endblock %}

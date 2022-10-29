@@ -1,0 +1,68 @@
+{% extends'profileeditentreprise.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} <h2>Modification d'une Entreprise</h2> {% endblock %}
+
+{% block lwost %}
+
+
+
+
+
+    {{ form_start(formedit) }}
+    <div class="my-custom-class-for-errors">
+    {{ form_errors(formedit) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_label(formedit.email) }}
+    {{ form_widget(formedit.email,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(formedit.email) }}
+    </div>
+    <div class="form-group">
+    {{ form_label(formedit.password) }}
+    {{ form_widget(formedit.password,{ 'attr':{ 'class':"form-control"}}) }}
+    {{ form_errors(formedit.password) }}
+    </div>
+    <div class="form-group">
+    {{ form_label(formedit.confirmPassword) }}
+    {{ form_widget(formedit.confirmPassword ,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(formedit.confirmPassword) }}
+    </div>
+    <div class="form-group">
+    {{ form_label(formedit.immatriculeEntreprise) }}
+    {{ form_widget(formedit.immatriculeEntreprise,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(formedit.immatriculeEntreprise) }}
+    </div>
+    <div class="form-group">
+    {{ form_label(formedit.libelleEntreprise) }}
+    {{ form_widget(formedit.libelleEntreprise,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(formedit.libelleEntreprise) }}
+    </div>
+    <div class="form-group">
+    {{ form_label(formedit.secteurEntreprise) }}
+    {{ form_widget(formedit.secteurEntreprise,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(formedit.secteurEntreprise) }}
+    </div>
+    <div class="form-group">
+    {{ form_label(formedit.telephone) }}
+    {{ form_widget(formedit.telephone,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(formedit.telephone) }}
+    </div>
+    <div class="form-group">
+    {{ form_label(formedit.adresse) }}
+    {{ form_widget(formedit.adresse,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(formedit.adresse) }}
+    </div>
+
+    <div class="form-group">
+    {{ form_label(formedit.siteweb) }}
+    {{ form_widget(formedit.siteweb,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(formedit.siteweb) }}
+    </div>
+    {{ form_row(formedit.Modifier,{ 'attr':{ 'class':"btn btn-primary"}}) }}
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends'khaledbase.html.twig' %}
+{% block navbar %}
+{% endblock %}
+
+{% block lwest %}
+    <div class="page-header header-filter" style="background-image: url('{{  asset('front/assets/img/bg2.jpg') }}'); background-size: cover; background-position: top center;">
+        <div class="container">
+
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card card-login">
+                    <div class="card-header card-header-primary text-center">
+                        <p class="label"><label for="_auth_code">Votre compte est bloque</label> </p>
+                    </div>
+
+                        <a class="btn btn-rose" href="{{ path('logout')}}">Déconnexion</a>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block taswira %}
+    {% endblock %}
+
+
+{% endblock %}
+{% block footer %}{% endblock %}
+

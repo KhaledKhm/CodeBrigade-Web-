@@ -1,0 +1,75 @@
+{% extends 'HoussemBack.html.twig' %}
+{% block body %}
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h4">Liste des Entretiens</h4>
+
+        </div>
+
+    </div>
+    <table class="table">
+        <tr class="table-light">
+            <th>ID</th>
+            <th>Libelle</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Evaluation</th>
+            <th>Participant</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+            <th>Imprimer PDF</th>
+        </tr>
+        {% for Entretien in classe %}
+            {% set cmp=0 %}
+            {% for p in participants %}
+                {% if p.idE == Entretien.Idevaluation %} {% set cmp=cmp+1 %} {% endif %}
+            {% endfor %}
+            <tr>
+                <td>
+                    {{Entretien.ID}}
+                </td>
+                <td>
+                    {{Entretien.Libelle}}
+                </td>
+                <td>
+                    {{ Entretien.Description}}
+                </td>
+                <td>
+                    {{ Entretien.Dateentretien}}
+                </td>
+                <td>
+                    {% for e in evaluation %}
+                        {% if e.id==Entretien.Idevaluation %} {{ e.Libelle }} {% endif %}
+                    {% endfor %}
+{#                    {{ Entretien.Idevaluation}}#}
+                </td>
+
+                <td>
+                    {% if (Entretien.IdParticipant== NULL and cmp!=0) %} <form action="{{ path('ajouterParticipantEntretien',{'id':Entretien.ID,'libelle':Entretien.Libelle,'description':Entretien.Description,'dateentretien':Entretien.Dateentretien,'idevaluation':Entretien.Idevaluation} )}}"><button class="btn btn-outline-primary"> Ajouter Participant</button></form> {% endif %}
+                    {% if(Entretien.IdParticipant!= NULL)  %}
+{#                        {{ Entretien.IdParticipant }} #}
+                        {% for u in utilisateur %}
+                            {% if u.id==Entretien.IdParticipant %} {{ u.NomPersonne }} {{ u.PrenomPersonne }}  {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if (Entretien.IdParticipant== NULL and cmp==0) %} Pas de Participants {% endif %}
+                </td>
+                <td>
+                    <form action="{{ path('modifierEntretien',{'id':Entretien.id} )}}"><button class="btn btn-outline-primary"> Modifier</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('supprimerEntretien',{'id':Entretien.id} )}}"><button class="btn btn-outline-primary">Supprimer</button></form>
+                </td>
+                <td>
+                    {% if (Entretien.IdParticipant!= NULL) %} <form action="{{ path('pdfEntretien',{'id':Entretien.ID,'libelle':Entretien.Libelle,'description':Entretien.Description,'dateentretien':Entretien.Dateentretien,'idevaluation':Entretien.idevaluation,'idparticipant':Entretien.IdParticipant} )}}"><button class="btn btn-outline-primary">pdf</button></form> {% endif %}
+                </td>
+            </tr>
+            {% set cmp=0 %}
+        {% endfor %}
+
+    </table>
+    <a class="btn btn-outline-primary" href="{{ path('EntretienT')}}">Tri Selon le Libelle Croissant</a>
+    <a class="btn btn-outline-primary" href="{{ path('EntretienTD')}}">Tri Selon le Libelle Déroissant</a>
+    <a class="btn btn-outline-primary" href="{{ path('PDFE') }}">Créer Fichier PDF</a>
+
+{% endblock %}

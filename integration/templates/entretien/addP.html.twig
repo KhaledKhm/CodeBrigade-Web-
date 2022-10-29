@@ -1,0 +1,52 @@
+{% extends 'HoussemBack.html.twig' %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ajouter Entretien</title>
+    </head>
+    <body>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="pd-20 card-box mb-30">
+        <h2>Ajouter Participant au Entretien</h2> <br> <br>
+        <div class="clearfix">
+
+        </div>
+
+        <form action="" method="POST">
+
+            Entretien <input class="form-control form-control-sm form-control-line" type="text" placeholder="IdEntretien" name="IdEntretien" readonly value={{ entretien.id }} hidden>
+            <input class="form-control form-control-sm form-control-line" type="text" placeholder="IdEntretien"  readonly value={{ entretien.Libelle }} >
+            <br>
+            Evaluation <input class="form-control form-control-sm form-control-line" type="text" placeholder="IdEvaluation" name="IdEvaluation" readonly value={{ entretien.Idevaluation }} hidden>
+            {% for e in evaluation %}
+            {% if e.id==entretien.Idevaluation %}
+            <input class="form-control form-control-sm form-control-line" type="text" placeholder="IdEvaluation" readonly value={{ e.Libelle }}>
+            {% endif %}
+            {% endfor %}
+            <br>
+            Participant <select class="custom-select col-12" name="IdParticipant">
+                {% for p in participant %}
+                    {% if(p.idE==entretien.idevaluation  and p.Note != NULL) %}
+                        {% for u in utilisateur %} {% if u.id==p.idP %}
+                        <option value={{ p.idP }}>{{ u.NomPersonne }} {{ u.PrenomPersonne }}</option> {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                {% endfor %}
+            </select>
+           
+            <br>
+            <br>
+            <br>
+
+            <button class="btn btn-outline-primary" type="submit">Ajouter Participant</button>
+        </form> </div>
+    </body>
+    </html>
+{% endblock %}

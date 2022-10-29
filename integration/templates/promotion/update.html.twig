@@ -1,0 +1,35 @@
+{% extends 'jamel1.html.twig' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier Promotion</title>
+</head>
+<body>
+<form action="" method="POST" style="width: 3000000000000pt">
+
+    <div class="">
+        <br>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header"><strong>Modifier une Promotion</strong></div>
+
+                <div class="card-body card-block">
+                    <div class="form-group"><label  class=" form-control-label">libelle</label><input type="text" name="libelle" value={{ promotion.libelle }} class="form-control"></div>
+                    <div class="form-group"><label class=" form-control-label">PoucentageReduction</label><input type="text" name="PoucentageReduction" value={{ promotion.PoucentageReduction }} class="form-control"></div>
+                    <div class="form-actions form-group">
+                        <br>
+                        <button type="submit"class="btn btn-primary btn-sm">modifier Promotion</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</form>
+</body>
+</html>
+{% endblock %}

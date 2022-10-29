@@ -1,0 +1,6 @@
+
+<h1>Nouveau Rendez-vous</h1>
+<p>Titre : {{ rdv.TitreOffre }}</p>
+<p>Email : {{ rdv.email }}</p>
+<p>Votre demande a été acceptée, merci d'étre au rendez-vous.<br/>
+   le rendez-vous sera le : {{ rdv.date|date('d-m-Y')}} au {{ rdv.Adresse}} </p>

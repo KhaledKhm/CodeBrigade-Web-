@@ -1,0 +1,99 @@
+{% extends 'frontWissem.html.twig' %}
+
+{% block body %}
+    <div class="main main-raised">
+        <div class="profile-content" align="center">
+            <div class="container">
+
+
+
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                                        <i class="material-icons">palette</i>Votre Formation
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content tab-space">
+
+                    <div class="tab-pane text-center gallery active" id="works">
+                        <style>
+                            table {
+                                width: 100%;
+                                background:#9c27b0;
+                                border: #a3adc1;
+                                color:white;
+
+                            }
+                            th, td {
+                                font-size: 30px;
+                                height: 70px;
+                            }
+
+                        </style>
+                        <table border="10px" align="center">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Libelle</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Nombre De Participant</th>
+                                <th scope="col">Date De Debut</th>
+                                <th scope="col">Date De Fin</th>
+                                <th scope="col">Operation</th>
+                            </tr>
+                            {% for formation in listFormation %}
+                            {% if formation.idutli == userid %}
+
+                                <tr>
+                                    <td>
+                                        {{ formation.id}}
+                                    </td>
+                                    <td>
+                                        {{ formation.libelle }}
+                                    </td>
+                                    <td>
+                                        {{ formation.description }}
+                                    </td>
+                                    <td>
+                                        {{ formation.nbrPatricipant }}
+
+                                    </td>
+                                    <td>
+                                        {{ formation.dateDebutFor|date('Y-m-d H:i:s') }}
+
+                                    </td>
+                                    <td>
+                                        {{ formation.dateFinFor|date('Y-m-d H:i:s') }}
+
+                                    </td>
+                                    <td align="center">
+                                        <a style="color: white" href={{ path('fupdateFormation',{'id':formation.id}) }}>🛠</a>
+                                        <a style="color: white">|</a>
+                                        <a style="color: white" onclick="notijs()" href={{ path('fdeleteFormation',{'id':formation.id}) }}>🗑</a>
+
+                                    </td>
+
+
+                                </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock%}

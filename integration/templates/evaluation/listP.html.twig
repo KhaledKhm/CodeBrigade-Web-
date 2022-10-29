@@ -1,0 +1,52 @@
+{% extends 'HoussemBack.html.twig' %}
+{% block body  %}
+
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h4"> Liste des Participations au Evaluation</h4>
+
+        </div>
+
+    </div>
+    <table class="table">
+        <tr class="table-light">
+            <th>Code</th>
+            <th>Evaluation</th>
+            <th>Participant</th>
+            <th>Note</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for p in classe %}
+            {% if (p.idE==idE) %}
+            <tr>
+                <td>
+                    {{p.Code}}
+                </td>
+                <td>
+                    {% for e in evaluation %}
+                    {% if p.idE==e.id %} {{ e.Libelle }} {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for u in util  %}
+                    {% if u.id==p.idP %} {{ u.nomPersonne }} {{ u.prenomPersonne }}
+                    {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% set cmp=0 %}
+                    {% for quiz in quiz %}
+                        {% if quiz.idEvaluation==p.idE %}
+                            {% set cmp=cmp+1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if(p.Note)== NULL %} Non Assigné {% else%} {{ p.Note }}/{{ cmp }} {% endif %}
+                </td>
+                <td>
+                    <form action="{{ path('supprimerParticipationEvaluation',{'code':p.code} )}}"><button class="btn btn-outline-primary">Supprimer</button></form>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

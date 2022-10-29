@@ -1,0 +1,81 @@
+{% extends'profileeditformateur.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} <h2>Modification d'un Formateur</h2> {% endblock %}
+
+{% block lwost %}
+
+
+
+{{ form_start(formedit) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(formedit) }}
+</div>
+
+
+    <div class="form-group">
+        {{ form_label(formedit.email) }}
+        {{ form_widget(formedit.email,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.email) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.password, 'Reecrire votre mot de passe') }}
+        {{ form_widget(formedit.password,{ 'attr':{'class':"form-control"},'placeholder':"test"}) }}
+        {{ form_errors(formedit.password) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.confirmPassword) }}
+        {{ form_widget(formedit.confirmPassword ,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.confirmPassword) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_label(formedit.cinPersonne, 'Votre CIN') }}
+        {{ form_widget(formedit.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.cinPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.nomPersonne, 'Votre Nom') }}
+        {{ form_widget(formedit.nomPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.nomPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.prenomPersonne, 'Votre Prenom') }}
+        {{ form_widget(formedit.prenomPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.prenomPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.sexePersonne, 'Votre Sexe') }}
+        {{ form_widget(formedit.sexePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.sexePersonne) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(formedit.etatSocialePersonne, 'Votre Etat Social') }}
+        {{ form_widget(formedit.etatSocialePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.etatSocialePersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.telephone, 'Votre Numero de telephone') }}
+        {{ form_widget(formedit.telephone,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.telephone) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.adresse, 'Votre Adresse') }}
+        {{ form_widget(formedit.adresse,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.adresse) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(formedit.domainePersonne, 'Votre domaine en informatique') }}
+        {{ form_widget(formedit.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.domainePersonne) }}
+    </div>
+
+    {{ form_row(formedit.Modifier,{ 'attr':{ 'class':"btn btn-primary"}}) }}
+
+
+
+
+
+    {% endblock %}

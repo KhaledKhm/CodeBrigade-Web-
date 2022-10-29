@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body  %}
+
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h4"> Liste des Participations au Evaluation</h4>
+
+        </div>
+
+    </div>
+    <table class="table">
+        <tr class="table-light">
+            <th>Code</th>
+            <th>ID Evaluation</th>
+            <th>ID Participant</th>
+            <th>Note</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for p in classe %}
+            {% if (p.idE==idE) %}
+            <tr>
+                <td>
+                    {{p.Code}}
+                </td>
+                <td>
+                    {{p.idE}}
+                </td>
+                <td>
+                    {{p.idP}}
+                </td>
+                <td>
+                    {% if(p.Note)== NULL %} Non Assigné {% endif %}
+                </td>
+                <td>
+                    <form action="{{ path('supprimerParticipationEvaluation',{'code':p.code} )}}"><button class="btn btn-outline-primary">Supprimer</button></form>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

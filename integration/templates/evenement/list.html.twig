@@ -1,0 +1,71 @@
+{% extends 'jamel1.html.twig' %}
+ {% block content %}  {% endblock  %}
+{% block body %}
+    <section id="blog" class="content-section" style="width: 1200pt" >
+    <div class="section-heading" >
+        <strong> <h2>Liste des <em> Evènements</em></h2> </strong>
+    </div>
+    </section>
+
+    <br><br><br>
+    <table id="bootstrap-data-table"class="table" >
+        <tr class="table-light">
+            <th>ID</th>
+            <th>Libelle</th>
+            <th>Description</th>
+            <th>Date Debut</th>
+            <th>Date Fin</th>
+            <th>Prix Inscription</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+
+
+        </tr>
+        {% for Evenement in classe %}
+            <tr>
+                <td>
+                    {{Evenement.id}}
+                </td>
+                <td>
+                    {{Evenement.libelle}}
+                </td>
+                <td>
+                    {{ Evenement.description}}
+                </td>
+                <td>
+                    {{ Evenement.DateDebut}}
+                </td>
+                <td>
+                    {{ Evenement.DateFin}}
+                </td>
+                <td>
+                    {{ Evenement.PrixInscription}}dt
+                </td>
+                <td>
+               <form  action="{{ path('modifierEvenement',{'id':Evenement.id} )}}"><button class="btn btn-warning btn-sm"><h6>Modifier</h6></button></form>
+                </td>
+
+                <td>
+
+                    <form action="{{ path('supprimerEvenement',{'id':Evenement.id} )}}"><button  class="btn btn-danger btn-sm"><h6>Supprimer</h6></button></form>
+                </td>
+                <td>
+                    <form action="{{ path('listPost0',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Liste Des Inscrits</h6></button></form>
+
+                </td>
+                <td>
+                    <form action="{{ path('ajoutPromo',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Promotion</h6></button></form>
+                </td>
+                <td>
+                    <form action="{{ path('listPost1',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>liste des promotions</h6></button></form>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <a href={{ path('ajouterEvenement') }}>Créer une Evenement</a>
+
+
+
+{% endblock %}

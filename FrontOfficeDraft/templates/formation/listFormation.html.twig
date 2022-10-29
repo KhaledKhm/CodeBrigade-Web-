@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon dw dw-menu"></div>
+
+
+
+            <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                    <div class="widget-data">
+
+                        <div class="weight-300 font-30 text-blue">Table Formation</div>
+                    </div>
+                    <div class="widget-icon">
+                        <div class="icon" data-color="#00eccf" style="color: rgb(0, 236, 207);"><i class="icon-copy fi-results-demographics"></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="header-right">
+            <div class="dashboard-setting user-notification">
+                <div class="dropdown">
+                    <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                        <i class="dw dw-settings2"></i>
+                    </a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    <div class="main-container">
+        <div class="pd-ltr-20">
+            <div class="card-box pd-20 height-100-p mb-30">
+                <div class="pd-20 card-box mb-30">
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Libelle</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date De Formation</th>
+                            <th scope="col">Operation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for formation in listFormation %}
+                            <tr>
+                                <td>
+                                    {{ formation.id}}
+                                </td>
+                                <td>
+                                    {{ formation.Libelle }}
+                                </td>
+                                <td>
+                                    {{ formation.Description }}
+                                </td>
+                                <td>
+                                    {{ formation.DateFormation|date('Y-m-d H:i:s') }}
+
+                                </td>
+                                <td align="center">
+                                    <a class="font-30" href={{ path('updateFormation',{'id':formation.id}) }}>🛠</a>
+                                    <a class="font-30">|</a>
+                                    <a class="font-30" href={{ path('deleteFormation',{'id':formation.id}) }}>🗑</a>
+
+                                </td>
+
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="collapse collapse-box" id="border-table">
+                        <div class="code-box">
+                            <div class="clearfix">
+                                <a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#border-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+
+                                <a href="#border-table" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+                            </div>
+                            <pre><code class="xml copy-pre" id="border-table-code">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+    </tr>
+  </tbody>
+</table>
+							</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

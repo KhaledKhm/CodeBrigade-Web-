@@ -1,0 +1,83 @@
+{% extends'khaledbackbase.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} {% endblock %}
+{% block lwost %}
+
+<table border="1" class="table table-hover">
+    <tr class="table-light">
+        <th>ID</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Account Status</th>
+        <th>Nom Personne</th>
+        <th>Prenom de Personne</th>
+        <th>Libelle de Entreprise</th>
+        <th>Adresse</th>
+        <th>Domaine de Personnne</th>
+        <th>secteur de l'Entreprise</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+        <th>Ban/Unban</th>
+    </tr>
+    {% for user in utilisateur %}
+    <tr>
+        <td>
+            {{user.id}}
+        </td>
+        <td>
+            {{user.email}}
+        </td>
+        <td>
+            {{user.role}}
+        </td>
+        <td>
+            {{user.accountStatus}}
+        </td>
+
+        <td>
+            {{user.nomPersonne}}
+        </td>
+        <td>
+            {{user.prenomPersonne}}
+        </td>
+        <td>
+            {{user.libelleEntreprise}}
+        </td>
+        <td>
+            {{user.adresse}}
+        </td>
+
+        <td>
+            {{user.domainePersonne}}
+        </td>
+        <td>
+            {{user.secteurEntreprise}}
+        </td>
+        <td>
+            <form action="{{ path('modifierUtilisateur',{'id':user.id} )}}"><button>Modifier</button></form>
+        </td>
+        <td>
+            <form action="{{ path('supprimerUtilisateur',{'id':user.id} )}}"><button>Supprimer</button></form>
+        </td>
+        <td>
+            {% if user.accountStatus=="Banned" %}
+        <form action="{{ path('unbanUtilisateur',{'id':user.id} )}}"><button>Unban</button></form>
+
+            {% else  %}
+                <form action="{{ path('banUtilisateur',{'id':user.id} )}}"><button>Ban</button></form>
+                {% endif %}
+        </td>
+
+
+    </tr>
+    {% endfor %}
+        {% block footer %}
+            {% block logout %}
+                {% if app.user %}
+                <a class="btn btn-rose" href="{{ path('logout')}}">Déconnexion</a>
+                {% endif %}
+            {% endblock %}
+        {% endblock %}
+
+
+{% endblock %}

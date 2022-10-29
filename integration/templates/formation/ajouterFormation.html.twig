@@ -1,0 +1,148 @@
+{% extends 'backWissem.html.twig' %}
+{% block preload %}
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo"><img src="{{ asset('publicWissem/vendors/images/JobbookLogo.svg') }}" alt=""></div>
+            <div class='loader-progress' id="progress_div">
+                <div class='bar' id='bar1'></div>
+            </div>
+            <div class='percent' id='percent1'>0%</div>
+            <div class="loading-text">
+                Loading...
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block header %}
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon dw dw-menu"></div>
+
+
+
+            <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                    <div class="widget-data">
+
+                        <div class="weight-300 font-30 text-blue">Ajouter Une Formation</div>
+                    </div>
+                    <div class="widget-icon">
+                        <div class="icon" data-color="#00eccf" style="color: rgb(0, 236, 207);"><i class="icon-copy fi-results-demographics"></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+{% endblock %}
+{% block body %}
+    <div class="main-container ">
+        <div class="col-md-6 col-sm-12 mb-30">
+            <div class="pd-20 card-box height-100-p">
+                <form enctype="multipart/form-data" id="form" role="form" action="{{ path('ajouterFormation') }}" method="post">`
+                    <div class="panel-body">
+
+                        <table >
+
+                            <tr>
+                                <td>
+                                    <label   class="col-sm-12 col-md-2 col-form-label">Libelle: &nbsp; &nbsp;</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="libelle" name="libelle" placeholder="Libelle">
+                                    <label id="libelle_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Libelle Invalide!!</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="col-sm-12 col-md-2 col-form-label" >Description: &nbsp; &nbsp;</label>
+                                </td>
+                                <td>
+                                    <textarea id="description" name="description" placeholder="Description" class="form-control"></textarea>
+
+                                    <label id="description_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Description Invalide!!</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label class="col-sm-12 col-md-2 col-form-label" >Nombre de participants:</label>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" id="nbrParticipant" name="nbrParticipant" placeholder="Nombre de participants">
+                                    <label id="nbrParticipant_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Nombre Invalide!!</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="col-sm-12 col-md-2 col-form-label" >Date Debut:</label>
+                                </td>
+                                <td>
+
+
+                                    <input onchange="changedate(this)" name="datedebut" class="form-control"  id="datetimepicker" type="text" readonly>
+                                    <script>
+                                        jQuery('#datetimepicker').datetimepicker({
+                                            startDate:'+2021/03/10',
+                                            minDate:'-1970/01/01',
+
+                                            minTime:'07:00',
+                                            maxTime:'19:00'
+                                        });
+                                    </script>
+
+
+
+                                   {#  <input type="text" class="form-control datetimepicker" id="datedebut" name="datedebut" placeholder="Date Debut" readonly >#}
+                                    <label id="datedebut_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Date Invalide!!</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="col-sm-12 col-md-2 col-form-label" >Date Fin:</label>
+                                </td>
+                                <td>
+                                    <input onchange="changedate2(this)" name="datefin" class="form-control"  id="datetimepicker1" type="text" readonly>
+
+                                    <script>
+                                        jQuery('#datetimepicker1').datetimepicker({
+                                            startDate:'+2021/03/10',
+                                            minDate:'-1970/01/01',
+                                            minTime:'07:00',
+                                            maxTime:'19:00'
+                                        });
+                                    </script>
+
+
+                                    <label id="datefin_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Date Invalide!!</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <button type="button" onclick="verif()"  class="btn btn-outline-primary">Ajouter</button>
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+        <script type="text/javascript" src="{{ asset('publicWissem/vendors/scripts/MyValidator2.js') }}"></script>
+
+        </script>
+    {% endblock %}
+
+{% endblock %}

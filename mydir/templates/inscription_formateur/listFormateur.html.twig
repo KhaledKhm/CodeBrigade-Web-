@@ -1,0 +1,27 @@
+
+    <h1>Liste des formateurs</h1>
+    <table border="1" class="table table-hover">
+        <tr class="table-light">
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Date</th>
+            <th>Id_utilisateur</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for user in utilisateur %}
+        <tr>
+            <td>
+                {{user.id}}
+            </td>
+            <td>
+                {{user.username}}
+            </td>
+            <td>
+                {{ user.password}}
+            </td>
+
+
+        </tr>
+    {% endfor %}

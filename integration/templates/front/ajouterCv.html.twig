@@ -1,0 +1,49 @@
+{% extends 'frontWissem.html.twig' %}
+ {% block javascripts %}
+     {{ parent() }}
+     <script type="text/javascript" src="{{ asset('publicWissem/vendors/scripts/MyValidator.js') }}"></script>
+ {% endblock %}
+{% block body %}
+    <div class="main main-raised">
+        <div class="section section-basic">
+            <div class="container">
+                <form enctype="multipart/form-data" id="form" role="form" action="{{ path('fajouterCv') }}" method="post">`
+                    <div class="col-lg-3 col-sm-4">
+                        <div class="form-group has-default">
+                            <h3>
+                                Votre Cv:
+                            </h3>
+                            <div>
+                                <input type="hidden" id="name" name="name">
+                            <div class="file-input">
+                                <input onchange="fichier(this)" name="cvdoc" id="cvdoc" type="file"  class="file">
+                                <label name="cvdoc_label" id="cvdoc_label" for="cvdoc">
+                                    Select file
+                                    <p class="file-name"></p>
+                                </label>
+                            </div>
+                                <label id="cvdoc_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Fichier Invalide!!</label>
+
+                            </div>
+                             </div>
+
+
+
+                    </div>
+
+
+                    <button type="button" onclick="verif()" class="btn btn-primary btn-round" >Ajouter</button>
+                </form>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Classic Modal -->
+
+
+
+
+{% endblock %}

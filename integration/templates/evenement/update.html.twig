@@ -1,0 +1,61 @@
+{% extends 'jamel1.html.twig' %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Modifier Evenement</title>
+    </head>
+    <body>
+
+
+    <form name="formulaire1" action="" method="POST" style="width: 1500pt">
+        <div class="card">
+            <div class="card-header"><strong>Modifier Evenement</strong></div>
+            <div class="card-body card-block">
+
+                <div class="form-group"><label  class=" form-control-label">Libelle</label>  <input required type="text" name="Libelle" placeholder="Saisissez le titre...................."value={{ evenement.libelle }} class="form-control"></div>
+                <div class="form-group"><label  class=" form-control-label">Description</label><input required type="text" name="description" placeholder="Saisissez la description...................."value={{ evenement.description }} class="form-control"></div>
+                <div class="form-group"><label  class=" form-control-label">DateDebut</label><input required  type="date" name="DateDebut" placeholder="Saisissez la Date Debut...................."value={{ evenement.DateDebut }} class="form-control"></div>
+                <div class="form-group"><label  class=" form-control-label">DateFin</label><input required  type="date" name="DateFin" placeholder="Saisissez la Date Fin...................."value={{ evenement.DateFin }} class="form-control"></div>
+                <div class="form-group"><label  class=" form-control-label">PrixInscription</label><input required type="number" name="PrixInscription" placeholder="Saisissez Prix d'inscription...................."value={{ evenement.PrixInscription }} class="form-control"></div>
+                <div class="form-group"><label  class=" form-control-label" >color</label>  <input required type="color"  name="color" value={{ evenement.color }}  class="form-control"></div>
+                <div class="form-actions form-group">
+                    <button type="submit" onclick="Alertfunction1()" class="btn btn-primary btn-sm">modifier Evenement</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    </body>
+    </html>
+
+    <script>
+        function Alertfunction1(){
+            var Libelle=document.formulaire1.Libelle.value;
+            var Description=document.formulaire1.description.value;
+            var DateDebut=document.formulaire1.DateDebut.value;
+            var DateFin=document.formulaire1.DateFin.value;
+            var PrixInscription=document.formulaire1.PrixInscription.value;
+
+            if (Libelle==null || Libelle==""){
+                alert("nom d'évènement ne peut pas être vide.");
+                return false;
+            }else if(Description==null || Description==""){
+                alert("Description d'évènement ne peut pas être vide.");
+                return false;
+            }
+            else if(DateDebut==null || DateDebut==""){
+                alert("Entrer Votre Date Debut de l'évènement!");
+                return false;
+            }
+            else if(DateFin==null || DateFin==""){
+                alert("Entrer Votre Date Fin de l'évènement!");
+                return false;
+            } else if(PrixInscription.length<1){
+                alert("Prix d'inscription ne peut pas être vide.");
+                return false;
+            }
+            alert("Vous avez Modifier l'évènement avec success.");
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends'profileedit.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} <h2>Inscription d'un candidat</h2> {% endblock %}
+
+{% block lwost %}
+
+
+
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.password, 'Votre mot de passe') }}
+        {{ form_widget(form.password,{ 'attr':{'class':"form-control"},'placeholder':"test"}) }}
+        {{ form_errors(form.password) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.confirmPassword) }}
+        {{ form_widget(form.confirmPassword ,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.confirmPassword) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.cinPersonne, 'Votre CIN') }}
+        {{ form_widget(form.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.cinPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.nomPersonne, 'Votre Nom') }}
+        {{ form_widget(form.nomPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.nomPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.prenomPersonne, 'Votre Prenom') }}
+        {{ form_widget(form.prenomPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.prenomPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.sexePersonne, 'Votre Sexe') }}
+        {{ form_widget(form.sexePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.sexePersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.etatSocialePersonne, 'Votre Etat Social') }}
+        {{ form_widget(form.etatSocialePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.etatSocialePersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.telephone, 'Votre Numero de telephone') }}
+        {{ form_widget(form.telephone,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.telephone) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.adresse, 'Votre Adresse') }}
+        {{ form_widget(form.adresse,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.adresse) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.domainePersonne, 'Votre domaine en informatique') }}
+        {{ form_widget(form.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(form.domainePersonne) }}
+    </div>
+
+    {{ form_row(form.Inscrire,{ 'attr':{ 'class':"btn btn-primary"}}) }}
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends'khaledbase.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} <h2>Inscription d'un Formateur</h2> {% endblock %}
+
+{% block lwest %}
+
+
+
+                {{ form_start(form) }}
+
+                {{ form_errors(form) }}
+
+                                {{ form_label(form.email, 'Votre email') }}
+                                {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.email) }}
+
+                                {{ form_label(form.password, 'Votre mot de passe') }}
+                                {{ form_widget(form.password,{ 'attr':{ 'class':"form-control"}}) }}
+                                {{ form_errors(form.password) }}
+
+                                {{ form_label(form.confirmPassword, 'Confirmez votre mot de passe') }}
+                                {{ form_widget(form.confirmPassword ,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.confirmPassword) }}
+
+
+                                {{ form_label(form.cinPersonne, 'Votre Numero de Carte D\'identite Nationale') }}
+                                {{ form_widget(form.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.cinPersonne) }}
+
+                                {{ form_label(form.nomPersonne, 'Votre nom') }}
+                                {{ form_widget(form.nomPersonne,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.nomPersonne) }}
+
+                                {{ form_label(form.prenomPersonne, 'Votre Prenom') }}
+                                {{ form_widget(form.prenomPersonne,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.prenomPersonne) }}
+
+                                {{ form_label(form.sexePersonne, 'Votre sexe') }}
+                                {{ form_widget(form.sexePersonne,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.sexePersonne) }}
+
+
+                                {{ form_label(form.etatSocialePersonne, 'Votre Etat Sociale') }}
+                                {{ form_widget(form.etatSocialePersonne,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.etatSocialePersonne) }}
+
+                                {{ form_label(form.telephone, 'Votre numero de telephone') }}
+                                {{ form_widget(form.telephone,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.telephone) }}
+
+                                {{ form_label(form.adresse, 'Votre adresse locale') }}
+                                {{ form_widget(form.adresse,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.adresse) }}
+
+
+
+                                {{ form_label(form.domainePersonne, 'Votre domaine en informatique') }}
+                                {{ form_widget(form.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
+                                {{ form_errors(form.domainePersonne) }}
+
+
+                {{ form_row(form.Inscrire,{ 'attr':{ 'class':"btn btn-primary"}}) }}
+
+
+
+
+{% endblock %}

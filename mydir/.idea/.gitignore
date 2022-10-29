@@ -1,0 +1,33 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+.idea/.gitignore
+.idea/CodeBrigade.iml
+.idea/php.xml
+composer.json
+composer.lock
+mydir/.env
+mydir/.gitignore
+mydir/composer.json
+mydir/composer.lock
+mydir/config/bundles.php
+mydir/config/packages/security.yaml
+mydir/public/index.php
+mydir/symfony.lock
+vendor/autoload.php
+vendor/bin/var-dump-server
+vendor/composer/ClassLoader.php
+vendor/composer/autoload_classmap.php
+vendor/composer/autoload_files.php
+vendor/composer/autoload_psr4.php
+vendor/composer/autoload_real.php
+vendor/composer/autoload_static.php
+vendor/composer/installed.json
+vendor/psr/container/README.md
+vendor/psr/container/composer.json
+vendor/psr/container/src/ContainerExceptionInterface.php
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\SPIRIT\Documents\GitHub\CodeBrigade\mydir\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

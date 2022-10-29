@@ -1,0 +1,14 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+2fa_login:
+  path: /2fa
+    # "scheb_two_factor.form_controller" references the controller service provided by the bundle.
+  # You don't HAVE to use it, but - except you have very special requirements - it is recommended.
+  controller: App\Controller\AuthentificationController::check2fa
+
+2fa_login_check:
+  path: /2fa_check
+captcha_routing:
+  resource: "@CaptchaBundle/Resources/config/routing.yml"
+

@@ -1,0 +1,74 @@
+{% extends 'frontWissem.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('publicWissem/vendors/scripts/MyValidator3.js') }}"></script>
+
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="main main-raised">
+        <div class="section section-basic">
+            <div class="container">
+                <form enctype="multipart/form-data" id="form" role="form" action="{{ path('fupdateFormation',{'id':formation.id})}}" method="post">`
+                    <div class="col-lg-3 col-sm-4">
+                        <div class="form-group has-default">
+                            <h3>Libelle:<input type="text" class="form-control" id="libelle" name="libelle" value="{{ formation.libelle }}">
+                                <label id="libelle_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Nom Invalide!!</label>
+
+                                Description: <textarea id="description" name="description" placeholder="Description" class="form-control">{{ formation.description }}</textarea>
+                                <label id="description_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Description Invalide!!</label>
+                                Nombre Pariciapant:<input type="number" class="form-control" id="nbrParticipant" name="nbrParticipant" value="{{ formation.nbrPatricipant}}">
+                                <label id="nbrParticipant_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Nombre Invalide!!</label>
+
+                                Date Debut:
+                                <input onchange="changedate(this)" name="datedebut" class="form-control"  id="datetimepicker" type="text" placeholder="{{ formation.dateDebutFor|date('Y/m/d H:i')  }}" readonly>
+                                <script>
+                                    jQuery('#datetimepicker').datetimepicker({
+                                        startDate:'+2021/03/10',
+                                        minDate:'-1970/01/01',
+
+                                        minTime:'07:00',
+                                        maxTime:'19:00'
+                                    });
+                                </script>
+                                <label id="datedebut_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Date Invalide!!</label>
+                                <br>
+                                Date Fin:
+                                <input onchange="changedate2(this)" name="datefin" class="form-control"  id="datetimepicker1" type="text" placeholder="{{ formation.dateFinFor|date('Y/m/d H:i')  }}" readonly>
+
+                                <script>
+                                    jQuery('#datetimepicker1').datetimepicker({
+                                        startDate:'+2021/03/10',
+                                        minDate:'-1970/01/01',
+
+                                        minTime:'07:00',
+                                        maxTime:'19:00'
+                                    });
+                                </script>
+
+
+                                <label id="datefin_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Date Invalide!!</label>
+
+
+
+                            </h3>
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <button type="button" onclick="verif()" class="btn btn-primary btn-round" >Modifier</button>
+                </form>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Classic Modal -->
+
+{% endblock %}

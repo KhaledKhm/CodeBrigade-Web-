@@ -1,0 +1,47 @@
+{% extends 'firas1.html.twig' %}
+{% block body %}
+    <table class="table">
+        <tr class="table-light">
+            <th scope="col">Description</th>
+            <th scope="col">Libelle</th>
+            <th scope="col">Date Limite</th>
+            <th scope="col">Salaire</th>
+            <th scope="col">Disponabilite</th>
+            <th scope="col">Modifier</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+        {% for Offre in class %}
+            <tr>
+                <td>
+                    {{Offre.Description}}
+                </td>
+                <td>
+                    {{Offre.Libelle}}
+                </td>
+                <td>
+                    {{ Offre.DateLimite}}
+                </td>
+                <td>
+                    {{ Offre.Salaire}}
+                </td>
+                <td>
+                    {{ Offre.Disponabilite}}
+                </td>
+                <td>
+                    <form action="{{ path('modifierOffre',{'id':Offre.id} )}}">
+                        <button type="submit" class="btn btn-secondary"> Modifier</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('supprimerOffre',{'id':Offre.id} )}}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('listPost',{'id':Offre.id})}}">
+                        <button type="submit" class="btn btn-primary">Liste des postulants</button></form>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <a class="btn btn-success"   href={{ path('Ajouteroffre') }}>Créer une Offre</a>
+{% endblock %}

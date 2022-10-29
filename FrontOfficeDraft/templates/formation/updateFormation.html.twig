@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon dw dw-menu"></div>
+
+
+
+            <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                    <div class="widget-data">
+
+                        <div class="weight-300 font-30 text-blue">Modifier Une Formation</div>
+                    </div>
+                    <div class="widget-icon">
+                        <div class="icon" data-color="#00eccf" style="color: rgb(0, 236, 207);"><i class="icon-copy fi-results-demographics"></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="header-right">
+            <div class="dashboard-setting user-notification">
+                <div class="dropdown">
+                    <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                        <i class="dw dw-settings2"></i>
+                    </a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    <div class="main-container ">
+        <div class="pd-20">
+            <div class="card-box pd-20 height-100-p mb-30">
+                <table >
+
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    <tr>
+                        <td>
+                            {{ form_label(form.Libelle,'Libelle :', { 'attr': {'class': 'col-sm-12 col-md-2 col-form-label'}}) }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.Libelle,{ 'attr': {'class': 'form-control'} }) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td >
+                            <div class=" font-weight-bold text-red-50 ">
+                                {{ form_errors(form.Libelle) }}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ form_label(form.Description,'Description :', { 'attr': {'class': 'col-sm-12 col-md-2 col-form-label'}}) }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.Description,{ 'attr': {'class': 'form-control'} }) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td >
+                            <div class=" font-weight-bold text-red-50 ">
+                                {{ form_errors(form.Description) }}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td>
+                                {{ form_label(form.DateFormation,'Date Formation : ', { 'attr': {'class': 'col-sm-12 col-md-2 col-form-label'}}) }}
+                            </td>
+                            <td>
+
+
+                                    {{ form_widget(form.DateFormation) }}
+
+
+                            </td>
+                        </div>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td></td>
+                        <td >
+                            <div class=" font-weight-bold text-red-50 ">
+                                {{ form_errors(form.DateFormation) }}
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td align="center" colspan="2">
+                            {{ form_widget(form.Modifier,{ 'attr': {'class': 'btn btn-primary'} }) }}
+                        </td>
+
+                    </tr>
+
+
+                    {{ form_end(form) }}
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

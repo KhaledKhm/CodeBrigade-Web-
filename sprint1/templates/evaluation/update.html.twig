@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier Evaluation</title>
+</head>
+<body>
+
+<br>
+<br>
+<br>
+
+<div class="pd-20 card-box mb-30">
+    <h2>Modifier Evaluation</h2> <br> <br>
+    <div class="clearfix">
+
+    </div>
+<form action="" method="POST" name="form" id="form">
+    Libelle <input class="form-control form-control-sm form-control-line" type="text" placeholder="Libelle" name="Libelle" id="Libelle" value={{ evaluation.Libelle }}>
+    <br>
+    Description <input class="form-control form-control-sm form-control-line" type="text" placeholder="Description" name="Description" id="Description" value={{ evaluation.Description }}>
+    <br>
+    Date Evaluation <input class="form-control form-control-sm form-control-line" type="text" placeholder="Date Evaluation" name="Dateevaluation" id="Dateevaluation" value={{ evaluation.Dateevaluation }} readonly>
+    <br>
+    Id Entreprise <select class="custom-select col-12" name="Identreprise">
+        {% for Entreprise in classe %}
+            <option value={{ Entreprise.Id }} {% if (Entreprise.Id==evaluation.Identreprise) %} selected {% endif %}>{{ Entreprise.Id }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <br>
+    <button class="btn btn-outline-primary" type="button" onclick="ControlSaisie()">Modifier Evaluation</button>
+</form>
+</div>
+</body>
+</html>
+    <script>
+        function isValidDate2(dateString)
+        {
+           /* var parts = dateString.split("-");
+            var day = parseInt(parts[1], 10);
+            var month = parseInt(parts[0], 10);
+            var year = parseInt(parts[2], 10);
+
+            var today = new Date();
+            var today_x = today.getFullYear()*10000+(today.getMonth()+1)*100+today.getDate();
+            var date_x = year*10000 + month*100 + day;
+            return date_x > today_x;*/
+            return true;
+        }
+
+        function isValidDate(dateString)
+        {
+            if(!/^\d{1,2}\-\d{1,2}\-\d{4}$/.test(dateString))
+                return false;
+
+            var parts = dateString.split("-");
+            var day = parseInt(parts[1], 10);
+            var month = parseInt(parts[0], 10);
+            var year = parseInt(parts[2], 10);
+
+            if(year < 1000 || year > 3000 || month == 0 || month > 12)
+                return false;
+
+            var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+            if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+                monthLength[1] = 29;
+
+            return day > 0 && day <= monthLength[month - 1];
+        }
+        function ControlSaisie() {
+            var Libelle = document.getElementById("Libelle").value;
+            var Description = document.getElementById("Description").value;
+            var DateE = document.getElementById("Dateevaluation").value;
+
+            if (Libelle !== "" && Libelle != null) {
+                if (Description != null && Description !== "") {
+                    if (DateE != null && DateE !== "" && isValidDate(DateE) && isValidDate2(DateE)) {
+                        //c bon
+                    } else {
+                        alert("Le Champ Date Evaluation n'est pas valide!");
+                        return false;
+                    }
+                } else {
+                    alert("Le Champ Description est vide!");
+                    return false
+                }
+            } else {
+                alert("Le Champ Libelle est vide!");
+                return false;
+            }
+            document.getElementById("form").submit();
+            return true;
+        }
+    </script>
+{% endblock %}

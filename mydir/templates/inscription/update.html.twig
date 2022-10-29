@@ -1,0 +1,85 @@
+
+{% extends'khaledbase.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} <h2>Inscription d\'un Formateur</h2> {% endblock %}
+
+{% block lwest %}
+
+
+
+{{ form_start(formedit) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(formedit) }}
+</div>
+<div class="row">
+
+    <div class="col">
+        {{ form_label(formedit.email) }}
+        {{ form_widget(formedit.email,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.email) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.password) }}
+        {{ form_widget(formedit.password,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.password) }}
+    </div>
+
+    <div class="col">
+        {{ form_label(formedit.accountStatus) }}
+        {{ form_widget(formedit.accountStatus,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.accountStatus) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.cinPersonne) }}
+        {{ form_widget(formedit.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.cinPersonne) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.nomPersonne) }}
+        {{ form_widget(formedit.nomPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.nomPersonne) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.prenomPersonne) }}
+        {{ form_widget(formedit.prenomPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.prenomPersonne) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.sexePersonne) }}
+        {{ form_widget(formedit.sexePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.sexePersonne) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.dateNaisPersonne) }}
+        {{ form_widget(formedit.dateNaisPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.dateNaisPersonne) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.etatSocialePersonne) }}
+        {{ form_widget(formedit.etatSocialePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.etatSocialePersonne) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.telephone) }}
+        {{ form_widget(formedit.telephone,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.telephone) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.adresse) }}
+        {{ form_widget(formedit.adresse,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.adresse) }}
+    </div>
+
+    <div class="col">
+        {{ form_label(formedit.domainePersonne) }}
+        {{ form_widget(formedit.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.domainePersonne) }}
+    </div>
+
+    {{ form_row(formedit.Modifier,{ 'attr':{ 'class':"btn btn-primary"}}) }}
+
+</div>
+
+
+
+    {% endblock %}

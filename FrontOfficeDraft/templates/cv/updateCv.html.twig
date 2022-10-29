@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon dw dw-menu"></div>
+
+
+
+            <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                    <div class="widget-data">
+
+                        <div class="weight-300 font-30 text-blue">Modifier Un Cv</div>
+                    </div>
+                    <div class="widget-icon">
+                        <div class="icon" data-color="#00eccf" style="color: rgb(0, 236, 207);"><i class="icon-copy dw dw-file"></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="header-right">
+            <div class="dashboard-setting user-notification">
+                <div class="dropdown">
+                    <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                        <i class="dw dw-settings2"></i>
+                    </a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+
+
+
+    <div class="main-container">
+    <div class="pd-ltr-20">
+    <div class="card-box pd-20 height-100-p mb-30">
+        <table >
+
+            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+            <tr>
+                <td>
+                    {{ form_label(form.Nom,'Nom :', { 'attr': {'class': 'col-sm-12 col-md-2 col-form-label'}}) }}
+                </td>
+                <td>
+                    {{ form_widget(form.Nom,{ 'attr': {'class': 'form-control'} }) }}
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td >
+                    <div class=" font-weight-bold text-red-50 ">
+                        {{ form_errors(form.Nom) }}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(form.prenom,'Prenom :', { 'attr': {'class': 'col-sm-12 col-md-2 col-form-label'}}) }}
+                </td>
+                <td>
+                    {{ form_widget(form.prenom,{ 'attr': {'class': 'form-control'} }) }}
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td >
+                    <div class=" font-weight-bold text-red-50 ">
+                        {{ form_errors(form.prenom) }}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <td>
+                        {{ form_label(form.CvDoc,'Votre Cv : ', { 'attr': {'class': 'custom-file-label'}}) }}
+                    </td>
+                    <td>
+
+                        <div class="custom-file">
+                            {{ form_widget(form.CvDoc,{ 'attr': {'class': 'custom-file-input'} }) }}
+                            <label class="custom-file-label">Choisissez votre fichier</label>
+                        </div>
+
+                    </td>
+                </div>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td></td>
+                <td >
+                    <div class=" font-weight-bold text-red-50 ">
+                        {{ form_errors(form.CvDoc) }}
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+
+                <td align="center" colspan="2">
+                    {{ form_widget(form.Modifier,{ 'attr': {'class': 'btn btn-primary'} }) }}
+                </td>
+
+            </tr>
+
+
+            {{ form_end(form) }}
+        </table>
+
+    </div>
+    </div></div>
+{% endblock %}

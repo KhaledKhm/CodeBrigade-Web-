@@ -1,0 +1,55 @@
+{% extends 'jamel1.html.twig' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajouter Promotion</title>
+</head>
+<body>
+<h1></h1>
+<form  name="formulaire2" action="" method="POST" style="width: 3000000000000pt">
+
+    <div class="">
+        <br>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header"><strong>Ajouter une Promotion</strong></div>
+
+                <div class="card-body card-block">
+                    <div class="form-group"><label class=" form-control-label">Libelle</label><input required type="text" name="Libelle" placeholder="Saisissez le titre...... " class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">PoucentageReduction</label><input required type="text" name="PoucentageReduction" placeholder="Saisissez PoucentageReduction......" class="form-control"></div>
+                    <div class="form-actions form-group">
+                        <br>
+                        <button onclick="Alertfunction1()" type="submit"class="btn btn-primary btn-sm">Ajouter Promotion </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+</body>
+</html>
+
+    <script>
+        function Alertfunction1(){
+            var Libelle=document.formulaire2.Libelle.value;
+            var PoucentageReduction=document.formulaire2.PoucentageReduction.value;
+
+            if (Libelle==null || Libelle==""){
+                alert("nom d'évènement ne peut pas être vide.");
+                return false;
+            }else if(PoucentageReduction==null || PoucentageReduction==""){
+                alert("PoucentageReduction d'évènement ne peut pas être vide.");
+                return false;
+            }
+            alert("Vous avez ajouter unr promotion a un évènement avec success.");
+        }
+    </script>
+
+{% endblock %}

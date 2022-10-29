@@ -1,0 +1,33 @@
+{% extends 'jamel2.html.twig' %}
+ {% block content %}  {% endblock  %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ajouter participation</title>
+    </head>
+    <body>
+    <h1>Créer une nouvelle Post</h1>
+    <form action="" method="POST">
+                Nom: <input type="text" placeholder="Nom" value="{{ user.nomPersonne }}">
+                Prenom: <input type="text" placeholder="Prenom"  value="{{ user.prenomPersonne }}">
+{#        Sexe: <input type="text" placeholder="Prenom" name="sex">#}
+{#                EtatScosial: <input type="text" placeholder="EtatScolaire" name="etatSocialePersonne">#}
+{#        telephone: <input type="text" placeholder="Adresse" name="telephone">#}
+{#                Date de naissance: <input type="date" placeholder="DateNais" name="DateNais">#}
+{#                Telephone: <input type="text" placeholder="Telephone" name="Telephone">#}
+{#                Status:#}
+{#                <p>#}
+{#                    Marié(e) <input type="radio" placeholder="Status" name="Status" value="Marié(e)">#}
+{#                    Célibaire <input type="radio" placeholder="Status" name="Status" value="Célibaire">#}
+{#                </p>#}
+{#                Competences: <input type="text" placeholder="Competences" name="Competences">#}
+        Email: <input type="text" placeholder="Email" value="{{ user.Email }}" name="Email">
+
+
+        <button type="submit" class="btn btn-primary btn-sm">submit</button>
+    </form>
+    </body>
+    </html>
+{% endblock %}

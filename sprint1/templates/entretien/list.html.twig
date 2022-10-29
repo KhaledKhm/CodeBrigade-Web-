@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h4">Liste des Entretiens</h4>
+
+        </div>
+
+    </div>
+    <table class="table">
+        <tr class="table-light">
+            <th>ID</th>
+            <th>Libelle</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Id Evaluation</th>
+            <th>Id Participant</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+            <th>Imprimer PDF</th>
+        </tr>
+        {% for Entretien in classe %}
+            <tr>
+                <td>
+                    {{Entretien.ID}}
+                </td>
+                <td>
+                    {{Entretien.Libelle}}
+                </td>
+                <td>
+                    {{ Entretien.Description}}
+                </td>
+                <td>
+                    {{ Entretien.Dateentretien}}
+                </td>
+                <td>
+                    {{ Entretien.Idevaluation}}
+                </td>
+                <td>
+                    {% if (Entretien.IdParticipant== NULL) %} <form action="{{ path('ajouterParticipantEntretien',{'id':Entretien.ID,'libelle':Entretien.Libelle,'description':Entretien.Description,'dateentretien':Entretien.Dateentretien,'idevaluation':Entretien.Idevaluation} )}}"><button class="btn btn-outline-primary"> Ajouter Participant</button></form> {% else  %} {{ Entretien.IdParticipant }} {% endif %}
+                </td>
+                <td>
+                    <form action="{{ path('modifierEntretien',{'id':Entretien.id} )}}"><button class="btn btn-outline-primary"> Modifier</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('supprimerEntretien',{'id':Entretien.id} )}}"><button class="btn btn-outline-primary">Supprimer</button></form>
+                </td>
+                <td>
+                    {% if (Entretien.IdParticipant!= NULL) %} <form action="{{ path('pdfEntretien',{'id':Entretien.ID,'libelle':Entretien.Libelle,'description':Entretien.Description,'dateentretien':Entretien.Dateentretien,'idevaluation':Entretien.idevaluation,'idparticipant':Entretien.IdParticipant} )}}"><button class="btn btn-outline-primary">pdf</button></form> {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

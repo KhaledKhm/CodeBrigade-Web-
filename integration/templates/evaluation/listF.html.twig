@@ -1,0 +1,55 @@
+{% extends 'HoussemFront.html.twig' %}
+{% block body %}
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+
+
+            <div class="row portfolio-container">
+                {% for Evaluation in classe %}
+                    {% for ParticipationEvaluation in participation %}
+                        {% if (ParticipationEvaluation.idE==Evaluation.id and ParticipationEvaluation.idP==userid) %}
+                <div class="col-lg-4 col-md-7 portfolio-item filter-app wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="publicHoussem/evaluation.jpg" class="img-fluid" alt="">
+{#                            <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="link-preview portfolio-lightbox" title="Preview"><i class="bx bx-plus"></i></a>#}
+                        </figure>
+
+
+                        <div class="portfolio-info">
+                            <h4><a href="portfolio-details.html">{{ Evaluation.Libelle }}</a></h4>
+                            <p>{{ Evaluation.Description }}</p>
+                        </div>
+                        {% set cmp=0 %}
+                        {% for quiz in quiz %}
+                            {% if quiz.idEvaluation==Evaluation.id %}
+                            {% set cmp=cmp+1 %}
+                            {% endif %}
+                        {% endfor %}
+                       {% if ParticipationEvaluation.Note==NULL and cmp!= 0  %} <center><a class="btn btn-blue"  href="{{ path('participerQuiz',{'id':Evaluation.id} )}}" ><i>Participer</i></a></center>{% endif %}
+                           {% if cmp==0 and ParticipationEvaluation.Note==NULL %} <center><a class="btn btn-blue"><i>Pas de Questions</i></a></center> {% endif %}
+                           {% if ParticipationEvaluation.Note!=NULL or ParticipationEvaluation.Note==0 %} <center><a class="btn btn-blue"><i>Votre Note est : {{ ParticipationEvaluation.Note }}/{{ cmp }}</i></a></center> {% endif %}
+{#                        <div class="text-center">#}
+{#                            <div class="d-flex justify-content-center">#}
+{#                                <h3 style="color : gray">Wikipedia Search for the term : {{Evaluation.Libelle}}</h3>#}
+{#                                <input id="key" name="search" value="{{Evaluation.Libelle}}" hidden>#}
+
+
+{#                                <div class="articles"></div>#}
+
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+
+
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Section -->
+{% endblock %}

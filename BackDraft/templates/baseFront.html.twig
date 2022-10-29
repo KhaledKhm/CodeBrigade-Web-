@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}JobBook{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/images/apple-touch-icon.png') }}">
+
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('vendors/images/JLogo.png') }}">
+
+        <!-- Mobile Specific Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/jquery.datetimepicker.css') }}">
+
+
+
+        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+        <!--     Fonts and icons     -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <!-- CSS Files -->
+        <link href="{{ asset('assets/css/material-kit.css?v=2.0.7') }}" rel="stylesheet" />
+
+        <!-- CSS Just for demo purpose, don't include it in your project -->
+        <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/fileup.css') }}" rel="stylesheet" />
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/jquery.datetimepicker.css') }}">
+
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/core/jquery.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/core/bootstrap-material-design.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/plugins/moment.min.js') }}"></script>
+        <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+        <script src="{{ asset('assets/js/plugins/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
+        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+        <script src="{{ asset('assets/js/plugins/nouislider.min.js') }}" type="text/javascript"></script>
+        <!--  Google Maps Plugin    -->
+        <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+        <script src="{{ asset('assets/js/material-kit.js?v=2.0.7') }}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('vendors/scripts/MyValidator.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendors/scripts/push.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendors/scripts/serviceWorker.min.js') }}"></script>
+
+
+
+
+        <script src="{{ asset('vendors/scripts/jquery.js') }}" ></script>
+        <script src="{{ asset('build/jquery.datetimepicker.full.min.js') }}" ></script>
+
+
+
+        <script>
+            $(document).ready(function() {
+                //init DateTimePickers
+                materialKit.initFormExtendedDatetimepickers();
+
+                // Sliders Init
+                materialKit.initSliders();
+            });
+
+
+            function scrollToDownload() {
+                if ($('.section-download').length != 0) {
+                    $("html, body").animate({
+                        scrollTop: $('.section-download').offset().top
+                    }, 1000);
+                }
+            }
+        </script>
+    {% endblock %}
+</head>
+<body>
+{% block nav %}
+    <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="">
+                    <div class="brand">
+                        <p style="color:Black ; font-size:30px"><b>Jobbook.</b></p>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="material-icons">apps</i> Services
+                        </a>
+                        <div class="dropdown-menu dropdown-with-icons">
+                            <a href="" class="dropdown-item">
+                                <i class="material-icons">layers</i> Ajout CV
+                            </a>
+                            <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
+                                <i class="material-icons">content_paste</i> Evenement
+                            </a>
+                            <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
+                                <i class="material-icons">bookmark</i> Consulter RDV
+                            </a>
+                            <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
+                                <i class="material-icons">warning</i> Reclamation
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.creative-tim.com/product/material-kit-pro" target="_blank">
+                            <i class="material-icons">account_circle</i> Mon Compte
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:;" class="btn btn-rose btn-raised btn-fab btn-round" data-toggle="dropdown">
+                            <i class="material-icons">email</i>
+                        </a>
+                    </li>
+                    <i>
+                        <a class="nav-link" href="https://www.creative-tim.com/product/material-kit-pro" target="_blank">
+                            <button class="btn btn-rose">Déconnexion</button>
+                        </a>
+                    </i>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+{% endblock %}
+{% block header %}
+    <div align="center" class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('{{ asset('assets/img/bg2.jpg') }}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="brand">
+                        <h1>Jobbook</h1>
+                        <h3>Get Hired !</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body1 %}
+    <div class="main main-raised">
+        <div class="section section-basic">
+            <div class="container">
+                <div class="col-lg-3 col-sm-4">
+                    <div class="form-group has-default">
+                        <h3>Libelle:<input type="text" class="form-control" placeholder="Libelle">
+                            Description: <input type="text" class="form-control" placeholder="Description">
+                            N°Participants:<input type="text" class="form-control" placeholder="N°">
+                            Date Debut: <input type="text" class="form-control" placeholder="dd/mm/yy">
+                            Date fin: <input type="text" class="form-control" placeholder="dd/mm/yy">
+                        </h3>
+                    </div>
+                </div>
+
+
+                <button class="btn btn-primary btn-round" >Ajouter</button>
+
+            </div>
+        </div>
+    </div>
+    <!-- Classic Modal -->
+
+{% endblock %}
+{% block body2 %}
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="material-icons">clear</i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link">Nice Button</button>
+                    <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <footer class="footer" data-background-color="black">
+        <div class="container">
+            <nav class="float-left">
+                <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com/">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/presentation">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/blog">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/license">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright float-right">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>, made with <i class="material-icons">favorite</i> by
+                <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a> for a better web.
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+</body>
+</html>

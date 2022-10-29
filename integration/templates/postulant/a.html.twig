@@ -1,0 +1,36 @@
+{% extends 'jamel1.html.twig' %}
+{% block body %}
+    <h4>Inscription Evenements</h4>
+    <br><br><br>
+    <table id="bootstrap-data-table"class="table" >
+
+        <th>Nom</th>
+        <th>Prénom</th>
+
+        <th>Email</th>
+
+
+        </tr>
+        {% for Post in post %}
+            <tr>
+
+                <td>
+                    {{Post.nomPersonne}}
+                </td>
+                <td>
+                    {{Post.prenomPersonne}}
+                </td>
+                <td>
+                    {{ Post.email}}
+                </td>
+
+                <td>
+                    <form ><button  class="btn btn-outline-info"><h6>Send Mail</h6></button></form>
+                </td>
+
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

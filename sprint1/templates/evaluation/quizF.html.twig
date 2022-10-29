@@ -1,0 +1,29 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <section id="portfolio" class="portfolio">
+    <div class="container">
+            {% set cmp=0 %}
+                {% for quiz in quiz %}
+                    {% if evaluation.id==quiz.idEvaluation %}
+                        {% set cmp=cmp+1 %}
+                <label class="large-label">Question{{ cmp}} : {{ quiz.Question }}</label><br>
+                    <input type="radio"  name="choix{{ cmp }}" value={{ quiz.Choix1 }}>
+                    <label>{{ quiz.Choix1 }}</label><br>
+                    <input type="radio"  name="choix{{ cmp }}" value={{ quiz.Choix2 }}>
+                    <label>{{ quiz.Choix2 }}</label><br>
+                    <input type="radio"  name="choix{{ cmp }}" value={{ quiz.Choix3 }}>
+                    <label for="choix">{{ quiz.Choix3 }}</label><br>
+                    {% endif %}
+                {% endfor %}
+        <form method="POST">
+            <div class="g-recaptcha" data-sitekey="6LezZHoaAAAAADzHuijwpBNJZfKeaydmQaLw25wC"></div>
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+        </body>
+
+    </div>
+    </section>
+
+{% endblock %}

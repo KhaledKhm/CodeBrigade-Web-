@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h4">Liste des Evaluations</h4>
+
+        </div>
+
+    </div>
+    <table class="table" >
+        <tr class="table-light">
+            <th>ID</th>
+            <th>Libelle</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>ID Entreprise</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+            <th>Imprimer PDF</th>
+        </tr>
+        {% for Evaluation in classe %}
+            <tr>
+                <td>
+                    {{Evaluation.ID}}
+                </td>
+                <td>
+                    {{Evaluation.Libelle}}
+                </td>
+                <td>
+                    {{ Evaluation.Description}}
+                </td>
+                <td>
+                    {{ Evaluation.Dateevaluation}}
+                </td>
+                <td>
+                    {{ Evaluation.idEntreprise}}
+                </td>
+                <td>
+                <form action="{{ path('modifierEvaluation',{'id':Evaluation.id} )}}"><button class="btn btn-outline-primary" > Modifier</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('supprimerEvaluation',{'id':Evaluation.id} )}}"><button class="btn btn-outline-primary">Supprimer</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('pdfEvaluation',{'id':Evaluation.id,'libelle':Evaluation.Libelle,'description':Evaluation.description,'dateevaluation':Evaluation.Dateevaluation,'identreprise':Evaluation.idEntreprise} )}}"><button class="btn btn-outline-primary">pdf</button></form>
+                </td>
+
+
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+
+
+{% endblock %}
+{#POTFOLIO*********************************************************************************#}

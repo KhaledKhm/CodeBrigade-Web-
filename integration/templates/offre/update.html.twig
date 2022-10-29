@@ -1,0 +1,153 @@
+{% extends 'firas1.html.twig' %}
+{% block body %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+            }
+
+            label {
+                padding: 12px 12px 12px 0;
+                display: inline-block;
+                display: block;
+                font: 1rem 'Fira Sans', sans-serif;
+            }
+
+            input[type=submit] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                float: right;
+            }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+
+            .col-25 {
+                float: left;
+                width: 25%;
+                margin-top: 6px;
+            }
+
+            .col-75 {
+                float: left;
+                width: 75%;
+                margin-top: 6px;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 600px) {
+                .col-25, .col-75, input[type=submit] {
+                    width: 100%;
+                    margin-top: 0;
+                }
+            }
+        </style>
+        <script>
+            function Verif(){
+                var Libelle=document.form1.Libelle.value;
+                var Salaire=document.form1.Salaire.value;
+                var Description=document.form1.Description.value;
+                var Disponabilite=document.form1.Disponabilite.value;
+                var DateLimite=document.form1.DateLimite.value;
+
+                if (Libelle==null || Libelle==""){
+                    alert("Libelle d'offre ne peut pas être vide.");
+                    return false;
+                }else if(Description == null || Description == ""){
+                    alert("Description d'évènement ne peut pas être vide.");
+                    return false;
+                }
+                else if(Salaire == null || Salaire == ""){
+                    alert("Entrer Votre Salaire de l'Offre!");
+                    return false;
+                }
+                else if(Disponabilite == null || Disponabilite==""){
+                    alert("Entrer Votre Disponabilite de l'Offre!");
+                    return false;
+                } else if(DateLimite == null || DateLimite == ""){
+                    alert("Prix d'inscription ne peut pas être vide.");
+                    return false;
+                }
+                alert('Vous avez modidifer votre Offre avec success  :  \n '+Libelle+'\n Merci.');
+            }
+        </script>
+    </head>
+    <body>
+
+    <h2>Modifier une offre</h2>
+    <div class="container">
+        <form action="" method="post" name="form1">
+            <div class="row">
+                <div class="col-25">
+                    <label for="Libelle">Libelle</label>
+                </div>
+                <div class="col-75">
+                    <input required type="text" value="{{ offre.Libelle }}"  name="Libelle" placeholder="Libelle..">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="Salaire">Salaire</label>
+                </div>
+                <div class="col-75">
+                    <input required type="number" placeholder="Salaire" value="{{ offre.Salaire }}" name="Salaire">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="Description">Description</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" required id="Description" name="Description" value="{{ offre.Description }}" placeholder="Description.." style="height:200px"></input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="Description">Disponabilite</label>
+                </div>
+                <div class="col-75">
+                    <input required type="text" name="Disponabilite" placeholder="Disponabilite.." value="{{ offre.Disponabilite }}" style="height:200px"></input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="DateLimite">Date Limite</label>
+                </div>
+                <div class="col-75">
+                    <input required type="date"  name="DateLimite" placeholder="Date Limite.." value="{{ offre.DateLimite }}">
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Submit" onclick="Verif()">
+            </div>
+        </form>
+    </div>
+    </body>
+    </html>
+
+
+{% endblock %}

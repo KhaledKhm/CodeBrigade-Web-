@@ -1,0 +1,93 @@
+{% extends 'backWissem.html.twig' %}
+{% block preload %}
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo"><img src="{{ asset('publicWissem/vendors/images/JobbookLogo.svg') }}" alt=""></div>
+            <div class='loader-progress' id="progress_div">
+                <div class='bar' id='bar1'></div>
+            </div>
+            <div class='percent' id='percent1'>0%</div>
+            <div class="loading-text">
+                Loading...
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block header %}
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon dw dw-menu"></div>
+
+
+
+            <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                    <div class="widget-data">
+
+                        <div class="weight-300 font-30 text-blue">Modifier Un Cv</div>
+                    </div>
+                    <div class="widget-icon">
+                        <div class="icon" data-color="#00eccf" style="color: rgb(0, 236, 207);"><i class="icon-copy dw dw-file"></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="main-container ">
+        <div class="col-md-6 col-sm-12 mb-30">
+            <div class="pd-20 card-box height-100-p">
+                <form enctype="multipart/form-data" id="form" role="form" action="{{ path('updateCv',{'id':cv.id}) }}" method="post">`
+                    <div class="panel-body">
+
+                        <table >
+
+                            <input type="hidden" name="name" id="name">
+
+                            <tr>
+                                <td>
+                                    <label class="col-sm-12 col-md-2 col-form-label" >Votre Cv:</label>
+                                </td>
+                                <td>
+                                    <div class="custom-file">
+
+                                        <input onchange="fichier(this)" id="cvdoc" name="cvdoc" type="file" class="custom-file-input"  >
+                                        <label id="cvdoc_label" class="custom-file-label">{{ cv.cvdoc }}</label>
+
+                                    </div>
+                                    <label id="cvdoc_war" hidden class="font-12 " data-color="red"> ⭕️Attention: Fichier Invalide!!</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <button type="button" onclick="verif()"  class="btn btn-outline-primary">Modifier</button>
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+        <script type="text/javascript" src="{{ asset('publicWissem/vendors/scripts/MyValidator4.js') }}"></script>
+    {% endblock %}
+{% endblock %}

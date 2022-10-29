@@ -1,0 +1,78 @@
+{% extends 'HoussemBack.html.twig' %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ajouter Question du Quiz au Evaluation</title>
+    </head>
+    <body>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="pd-20 card-box mb-30">
+        <h2>Créer Question du Quiz</h2> <br> <br>
+        <div class="clearfix">
+
+        </div>
+        <form action="" method="POST" name="form" id="form">
+            Evaluation <input class="form-control form-control-sm form-control-line" type="text" placeholder="id Evaluation" name="idE" readonly value={{ Evaluation.id }} hidden>
+            <input class="form-control form-control-sm form-control-line" type="text" placeholder="id Evaluation" readonly value={{ Evaluation.Libelle }} >
+            <br>
+            Question <input class="form-control form-control-sm form-control-line" type="text" placeholder="Question" name="Question" id="Question">
+            <br>
+            Choix1 <input class="form-control form-control-sm form-control-line" type="text" placeholder="Choix1" name="Choix1" id="Choix1">
+            <br>
+            Choix2 <input class="form-control form-control-sm form-control-line" type="text" placeholder="Choix2" name="Choix2" id="Choix2">
+            <br>
+            Choix3 <input class="form-control form-control-sm form-control-line" type="text" placeholder="Choix3" name="Choix3" id="Choix3">
+            <br>
+            Reponse <select class="custom-select col-12" name="Response">
+                <option value=1>Choix1</option>
+                <option value=2>Choix2</option>
+                <option value=3>Choix3</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-outline-primary" type="button" onclick="ControlSaisie()">Ajouter Question</button>
+        </form>
+    </div>
+    </body>
+    </html>
+    <script>
+        function ControlSaisie() {
+            var Question = document.getElementById("Question").value;
+            var Choix1 = document.getElementById("Choix1").value;
+            var Choix2 = document.getElementById("Choix2").value;
+            var Choix3 = document.getElementById("Choix3").value;
+
+            if (Question !== "" && Question != null) {
+                if (Choix1 != null && Choix1 !== "") {
+                    if (Choix2 != null && Choix2 !== "") {
+                        if (Choix3 != null && Choix3 !== "") {
+                            //c bon
+                        } else {
+                            alert("Le Champ Choix3 est vide!");
+                            return false;
+                        }
+                    } else {
+                        alert("Le Champ Choix2 est vide!");
+                        return false
+                    }
+                } else {
+                    alert("Le Champ Choix1 est vide!");
+                    return false;
+                }
+            } else {
+                alert("Le Champ Question est vide!");
+                return false;
+            }
+            document.getElementById("form").submit();
+            return true;
+        }
+    </script>
+{% endblock %}

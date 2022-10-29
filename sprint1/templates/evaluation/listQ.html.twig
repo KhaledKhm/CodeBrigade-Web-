@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block body  %}
+
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h4"> Liste des Questions du Quiz</h4>
+
+        </div>
+
+    </div>
+    <table class="table">
+        <tr class="table-light">
+            <th>ID Evaluation</th>
+            <th>ID Quiz</th>
+            <th>Question</th>
+            <th>Choix1</th>
+            <th>Choix2</th>
+            <th>Choix3</th>
+            <th>Reponse</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for q in classe %}
+            {% if (q.idEvaluation==idE) %}
+                <tr>
+                    <td>
+                        {{q.idEvaluation}}
+                    </td>
+                    <td>
+                        {{q.id}}
+                    </td>
+                    <td>
+                        {{q.Question}}
+                    </td>
+                    <td>
+                        {{q.Choix1}}
+                    </td>
+                    <td>
+                        {{q.Choix2}}
+                    </td>
+                    <td>
+                        {{q.Choix3}}
+                    </td>
+                    <td>
+                        Choix{{q.Reponse}}
+                    </td>
+                    <td>
+                        <form action="{{ path('supprimerQuiz',{'id':q.id} )}}"><button class="btn btn-outline-primary">Supprimer</button></form>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends'khaledbase.html.twig' %}
+{% block navbar %}
+{% endblock %}
+
+{% block lwest %}
+{% block taswira %}
+{% endblock %}
+
+    <img  src="{{ asset('imgFormateur.png') }}">
+<a  href="{{ path('inscription_formateur_add') }}" class="btn btn-sucess">Formateur</a>
+    <a href="{{ path('inscription_entreprise_add') }}" class="btn btn-sucess">Entreprise</a>
+    <a href="{{ path('inscription_condidat_add') }}" class="btn btn-sucess">Candidat</a>
+
+
+{% endblock %}
+{% block footer %}
+{% endblock %}
